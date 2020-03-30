@@ -7,12 +7,12 @@ RUN apk update && apk add python make g++ git
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
-COPY /src /app
+COPY . /app
 COPY .env.example .env
 
 ENV PORT=8081
 
-RUN touch /data/production.db
+RUN touch ./data/production.db
 
 EXPOSE 8081
 CMD [ "npm", "start" ]
